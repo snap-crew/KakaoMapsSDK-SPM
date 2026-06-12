@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/KakaoMapsSDK-Swift.h</key>
 		<data>
-		XyNGJtO+zCHBfPJU3EU55NLV6ws=
+		MIknHCyOsViSLMYjfKZ1+7o4YtA=
 		</data>
 		<key>Headers/KakaoMapsSDK.h</key>
 		<data>
@@ -34,47 +34,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ygTNsZ98MS9vYl0vEBu01k3+1TY=
+		q57bWtblGGRBUUgwWWkwrJNuu3c=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		ZeL1za/RK7UrCbCXgYKpXH7ewEI=
+		pV5KwNZBiSunuE65UHPdQei/LJU=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		4MtAdvDJ1lK/fn4Hrt2xO9H9Ao0=
+		bC2wv9D0wQGM2IyGILlLjLTK7P8=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		2YHnCOtQIW4TahD7ed7ykq6UTqM=
+		7/+WjGFG+2tPDN00jnf7J95G4nc=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		4MtAdvDJ1lK/fn4Hrt2xO9H9Ao0=
+		bC2wv9D0wQGM2IyGILlLjLTK7P8=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		gdrnVttVcePFFkLTZQJbUN2qbi4=
+		sBATFH+B6q946axwyCVjQAqE6xg=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		ZeL1za/RK7UrCbCXgYKpXH7ewEI=
+		pV5KwNZBiSunuE65UHPdQei/LJU=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		+Up8ZkjT6uHUyKf+JWqAVeHFuYE=
+		/71oStmpkZIcI8bWkj9g7xh8tsE=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ac8ugu3YkmElc27Be/gOdheUaoY=
+		ss7+DiKhT30fXZ49AQe8iZxMD/g=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		+Up8ZkjT6uHUyKf+JWqAVeHFuYE=
+		/71oStmpkZIcI8bWkj9g7xh8tsE=
 		</data>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		VwZrtIQbs5hHFQ1h8/OEsaJUv8g=
+		Z741asuo7sBHzi8HXavDrTY1cFo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -119,7 +119,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4n7N0VpTAcX4dMTmWFNDQ6LYbCfJnl4HM4eBxvaVScE=
+			TVEqPrOt4im+AyEq9qCoCBAl0Zdhp0ZYGrpT/wt6ht0=
 			</data>
 		</dict>
 		<key>Headers/KakaoMapsSDK.h</key>
@@ -140,70 +140,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			F+OJMH7UXwo0RliOn4DaVXDbO1IYDhmW4ZJQWl9nFVM=
+			cV0BUBnm8BoABA2xD54HeGjR9bi2cy1nSthD/dQN/aM=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pyk+vHp16oao6tL7nfBQmul3Us77RsFE75XZw9HdQvQ=
+			uf3uZs1k4CyEjGiIjaFK4hh0JkMYvzBYKPwyWvqSBP8=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tT7mdOOu/XZEF/BblQWvPviC4DApn+ThioZCjobcb+o=
+			l+Pw3PpHO+5Okyb6RYrrD+W1VDH/AoUQl0VHhY6zw58=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pyk+vHp16oao6tL7nfBQmul3Us77RsFE75XZw9HdQvQ=
+			uf3uZs1k4CyEjGiIjaFK4hh0JkMYvzBYKPwyWvqSBP8=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JJk+oUbW+5MeKLmg1FLiXAqThX5/co2R0QxVEUaDoHM=
+			gIcY/M1DRp0ICgGsD2EZpfx+5dYyJ1ZjN8VQGGS2G64=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F+OJMH7UXwo0RliOn4DaVXDbO1IYDhmW4ZJQWl9nFVM=
+			cV0BUBnm8BoABA2xD54HeGjR9bi2cy1nSthD/dQN/aM=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RA8nQPPZ5vLfoXmP1Mck8c+PRom70qrqxPsQy5bQupo=
+			+6ttuwKzCkOQHFhinX9MOxMlPjsXwmU/gYUWnSsZmjk=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bvDtggh3pqi8gaxAYrAojS2ZKkqA8D43pQ/SIBIkRfU=
+			9c7YZgMrQTzZlXA4AirA7pp5LiIXYTshA1NHFcS9Dao=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RA8nQPPZ5vLfoXmP1Mck8c+PRom70qrqxPsQy5bQupo=
+			+6ttuwKzCkOQHFhinX9MOxMlPjsXwmU/gYUWnSsZmjk=
 			</data>
 		</dict>
 		<key>Modules/KakaoMapsSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TD2Q3geOK3wwYdRVQg9N8deQfn1GfDokntK/+KfMXrs=
+			Tr7OOZgl/1wlwXWuNm3qjUt9bPVoMMCutXHI3n1zKDM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

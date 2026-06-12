@@ -1939,6 +1939,15 @@ SWIFT_CLASS("_TtC12KakaoMapsSDK17LabelLayerOptions")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface LabelLayerOptions (SWIFT_EXTENSION(KakaoMapsSDK))
+/// 경쟁 예외 레이어를 추가한다.
+/// \param layerName 경쟁 예외로 지정할 레이어의 이름. 해당 레이어들과는 경쟁을 하지 않는다.
+///
+- (void)addCompetitionExcludeLayer:(NSString * _Nonnull)layerName;
+/// 경쟁 예외 레이어
+- (NSArray<NSString *> * _Nonnull)getCompetitionExcludeLayers SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class PoiStyle;
 @class WaveTextStyle;
 @class LodLabelLayerOptions;
@@ -2212,6 +2221,15 @@ SWIFT_CLASS("_TtC12KakaoMapsSDK20LodLabelLayerOptions")
 @property (nonatomic) float radius;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@interface LodLabelLayerOptions (SWIFT_EXTENSION(KakaoMapsSDK))
+/// 경쟁 예외 레이어를 추가한다.
+/// \param layerName 경쟁 예외로 지정할 레이어의 이름. 해당 레이어들과는 경쟁을 하지 않는다.
+///
+- (void)addCompetitionExcludeLayer:(NSString * _Nonnull)layerName;
+/// 경쟁 예외 레이어
+- (NSArray<NSString *> * _Nonnull)getCompetitionExcludeLayers SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class PoiText;
@@ -7196,6 +7214,15 @@ SWIFT_CLASS("_TtC12KakaoMapsSDK17LabelLayerOptions")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface LabelLayerOptions (SWIFT_EXTENSION(KakaoMapsSDK))
+/// 경쟁 예외 레이어를 추가한다.
+/// \param layerName 경쟁 예외로 지정할 레이어의 이름. 해당 레이어들과는 경쟁을 하지 않는다.
+///
+- (void)addCompetitionExcludeLayer:(NSString * _Nonnull)layerName;
+/// 경쟁 예외 레이어
+- (NSArray<NSString *> * _Nonnull)getCompetitionExcludeLayers SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class PoiStyle;
 @class WaveTextStyle;
 @class LodLabelLayerOptions;
@@ -7469,6 +7496,15 @@ SWIFT_CLASS("_TtC12KakaoMapsSDK20LodLabelLayerOptions")
 @property (nonatomic) float radius;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@interface LodLabelLayerOptions (SWIFT_EXTENSION(KakaoMapsSDK))
+/// 경쟁 예외 레이어를 추가한다.
+/// \param layerName 경쟁 예외로 지정할 레이어의 이름. 해당 레이어들과는 경쟁을 하지 않는다.
+///
+- (void)addCompetitionExcludeLayer:(NSString * _Nonnull)layerName;
+/// 경쟁 예외 레이어
+- (NSArray<NSString *> * _Nonnull)getCompetitionExcludeLayers SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class PoiText;

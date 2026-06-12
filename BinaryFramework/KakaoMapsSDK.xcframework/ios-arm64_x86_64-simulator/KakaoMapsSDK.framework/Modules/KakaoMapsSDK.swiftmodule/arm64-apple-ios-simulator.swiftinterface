@@ -101,24 +101,6 @@ import _SwiftConcurrencyShims
   }
   @objc deinit
 }
-@objc public protocol RouteAnimationEffect {
-  @objc var interpolation: KakaoMapsSDK.AnimationInterpolation { get set }
-  @objc var hideAtStop: Swift.Bool { get set }
-  @objc var resetToInitialState: Swift.Bool { get set }
-}
-@objc @_inheritsConvenienceInitializers public class ZoneLinkInfo : ObjectiveC.NSObject {
-  @objc override dynamic public init()
-  @objc convenience public init(zoneId: Swift.String, detailId: Swift.String)
-  @objc public var zoneId: Swift.String {
-    @objc get
-    @objc set
-  }
-  @objc public var detailId: Swift.String {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
 extension KakaoMapsSDK.MapviewInfo {
   @objc convenience dynamic public init(viewName: Swift.String, appName: Swift.String = "openmap", viewInfoName: Swift.String = "map", defaultPosition: KakaoMapsSDK.MapPoint?, defaultLevel: Swift.Int = 17, enabled: Swift.Bool = true)
 }
@@ -142,6 +124,13 @@ extension KakaoMapsSDK.MapviewInfo {
   }
   @objc deinit
 }
+@_inheritsConvenienceInitializers @objc public class SDKInitializer : ObjectiveC.NSObject {
+  @objc public static func InitSDK(appKey: Swift.String, phase: KakaoMapsSDK.KAPhase = .real)
+  @objc public static func GetPhase() -> KakaoMapsSDK.KAPhase
+  @objc public static func GetAppKey() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc open class MapPolyline : ObjectiveC.NSObject {
   @objc required public init(line: [KakaoMapsSDK.MapPoint], styleIndex: Swift.UInt)
   @objc public var line: [KakaoMapsSDK.MapPoint] {
@@ -149,36 +138,6 @@ extension KakaoMapsSDK.MapviewInfo {
   }
   @objc public var styleIndex: Swift.UInt {
     @objc get
-  }
-  @objc deinit
-}
-@objc public class ProgressAnimationEffect : ObjectiveC.NSObject, KakaoMapsSDK.RouteAnimationEffect {
-  @objc public init(direction: KakaoMapsSDK.ProgressDirection, type: KakaoMapsSDK.RouteProgressType)
-  @objc public var startPoint: Swift.Float {
-    @objc get
-  }
-  @objc public var endPoint: Swift.Float {
-    @objc get
-  }
-  @objc public var direction: KakaoMapsSDK.ProgressDirection {
-    @objc get
-    @objc set
-  }
-  @objc public var type: KakaoMapsSDK.RouteProgressType {
-    @objc get
-    @objc set
-  }
-  @objc public var interpolation: KakaoMapsSDK.AnimationInterpolation {
-    @objc get
-    @objc set
-  }
-  @objc public var hideAtStop: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @objc public var resetToInitialState: Swift.Bool {
-    @objc get
-    @objc set
   }
   @objc deinit
 }
@@ -253,16 +212,6 @@ extension KakaoMapsSDK.MapviewInfo {
   @objc var hideAtStop: Swift.Bool { get set }
   @objc var playCount: Swift.UInt { get set }
 }
-@objc public protocol RoadviewEventDelegate {
-  @objc optional func roadviewDidResized(_ roadview: KakaoMapsSDK.Roadview)
-  @objc optional func panoramaUpdated(_ panoId: Swift.String)
-  @objc optional func roadviewFocusDidChanged(roadview: KakaoMapsSDK.Roadview, focus: Swift.Bool)
-  @objc func roadviewResultDidReceived(roadview: KakaoMapsSDK.Roadview, panoID: Swift.String, date: Swift.String, position: KakaoMapsSDK.MapPoint)
-  @objc optional func noRoadviewResult(_ roadview: KakaoMapsSDK.Roadview)
-  @objc optional func roadviewRequestDidFailed(_ roadview: KakaoMapsSDK.Roadview)
-  @objc optional func invalidRoadviewRequest(_ roadview: KakaoMapsSDK.Roadview)
-  @objc optional func roadviewDidTapped(roadview: KakaoMapsSDK.Roadview, point: CoreFoundation.CGPoint)
-}
 @objc public protocol GuiEventDelegate {
   @objc optional func guiDidTapped(_ gui: KakaoMapsSDK.GuiBase, componentName: Swift.String)
   @objc optional func guiAnimationStateDidChanged(_ gui: KakaoMapsSDK.GuiBase, componentName: Swift.String, state: KakaoMapsSDK.AnimationState)
@@ -319,23 +268,6 @@ extension KakaoMapsSDK.MapviewInfo {
   @objc public var userObject: Swift.AnyObject? {
     @objc get
     @objc set
-  }
-  @objc deinit
-}
-@objc open class RoadviewLookAt : ObjectiveC.NSObject {
-  @objc public init(pan: Swift.Double, tilt: Swift.Double)
-  @objc public init(position: KakaoMapsSDK.MapPoint)
-  @objc public var pan: Swift.Double {
-    @objc get
-  }
-  @objc public var tilt: Swift.Double {
-    @objc get
-  }
-  @objc public var position: KakaoMapsSDK.MapPoint? {
-    @objc get
-  }
-  @objc public var lookAtType: KakaoMapsSDK.RoadviewLookAtType {
-    @objc get
   }
   @objc deinit
 }
@@ -511,6 +443,15 @@ extension KakaoMapsSDK.MapviewInfo {
   }
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers public class MapviewInfo : KakaoMapsSDK.ViewInfo {
+  @objc public var defaultPosition: KakaoMapsSDK.MapPoint {
+    @objc get
+  }
+  @objc public var defaultLevel: Swift.Int {
+    @objc get
+  }
+  @objc deinit
+}
 @objc @_hasMissingDesignatedInitializers open class SpriteGui : KakaoMapsSDK.GuiBase {
   @objc public init(_ name: Swift.String)
   @objc public func addChild(_ component: KakaoMapsSDK.GuiComponentBase)
@@ -599,96 +540,6 @@ extension KakaoMapsSDK.MapviewInfo {
   }
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers public class AnimationKeyFrame : ObjectiveC.NSObject {
-  @objc public var interpolation: KakaoMapsSDK.AnimationInterpolation {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_hasMissingDesignatedInitializers public class ScaleAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
-  @objc public init(scale: KakaoMapsSDK.Vector2, interpolation: KakaoMapsSDK.AnimationInterpolation)
-  @objc public var scale: KakaoMapsSDK.Vector2 {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_hasMissingDesignatedInitializers public class AlphaAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
-  @objc public init(alpha: Swift.Float, interpolation: KakaoMapsSDK.AnimationInterpolation)
-  @objc public var alpha: Swift.Float {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_hasMissingDesignatedInitializers public class ScaleAlphaAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
-  @objc public init(scale: KakaoMapsSDK.Vector2, alpha: Swift.Float, interpolation: KakaoMapsSDK.AnimationInterpolation)
-  @objc public var alpha: Swift.Float {
-    @objc get
-    @objc set
-  }
-  @objc public var scale: KakaoMapsSDK.Vector2 {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_hasMissingDesignatedInitializers public class TransformAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
-  @objc public init(translation: KakaoMapsSDK.Vector2, rotation: Swift.Float, scale: KakaoMapsSDK.Vector2, alpha: Swift.Float, interpolation: KakaoMapsSDK.AnimationInterpolation)
-  @objc public var rotation: Swift.Float {
-    @objc get
-    @objc set
-  }
-  @objc public var scale: KakaoMapsSDK.Vector2 {
-    @objc get
-    @objc set
-  }
-  @objc public var translation: KakaoMapsSDK.Vector2 {
-    @objc get
-    @objc set
-  }
-  @objc public var alpha: Swift.Float {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class KeyFrameAnimationEffect : ObjectiveC.NSObject, KakaoMapsSDK.PoiAnimationEffect {
-  @objc public var hideAtStop: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @objc public var removeAtStop: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @objc public var resetToInitialState: Swift.Bool {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class TransformAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
-  @objc dynamic public init()
-  @objc public func addKeyframe(_ frame: KakaoMapsSDK.TransformAnimationKeyFrame)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class ScaleAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
-  @objc dynamic public init()
-  @objc public func addKeyframe(_ frame: KakaoMapsSDK.ScaleAnimationKeyFrame)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class AlphaAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
-  @objc dynamic public init()
-  @objc public func addKeyframe(_ frame: KakaoMapsSDK.AlphaAnimationKeyFrame)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class ScaleAlphaAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
-  @objc dynamic public init()
-  @objc public func addKeyframe(_ frame: KakaoMapsSDK.ScaleAlphaAnimationKeyFrame)
-  @objc deinit
-}
 extension KakaoMapsSDK.KakaoMap {
   public func addMapTappedEventHandler<U>(target: U, handler: @escaping (U) -> (KakaoMapsSDK.ViewInteractionEventParam) -> Swift.Void) -> any KakaoMapsSDK.DisposableEventHandler where U : AnyObject
   public func addTerrainTappedEventHandler<U>(target: U, handler: @escaping (U) -> (KakaoMapsSDK.TerrainInteractionEventParam) -> Swift.Void) -> any KakaoMapsSDK.DisposableEventHandler where U : AnyObject
@@ -726,6 +577,9 @@ extension KakaoMapsSDK.KakaoMap {
     @objc get
   }
   @objc deinit
+}
+extension KakaoMapsSDK.RoadviewInfo {
+  @objc convenience dynamic public init(viewName: Swift.String, appName: Swift.String = "roadview", viewInfoName: Swift.String = "roadview", enabled: Swift.Bool = true)
 }
 @objc @_hasMissingDesignatedInitializers open class InfoWindow : KakaoMapsSDK.GuiBase {
   @objc public init(_ name: Swift.String)
@@ -780,9 +634,6 @@ extension KakaoMapsSDK.KakaoMap {
     @objc set
   }
   @objc deinit
-}
-extension KakaoMapsSDK.RoadviewInfo {
-  @objc convenience dynamic public init(viewName: Swift.String, appName: Swift.String = "roadview", viewInfoName: Swift.String = "roadview", enabled: Swift.Bool = true)
 }
 @objc @_hasMissingDesignatedInitializers open class LodPoi : ObjectiveC.NSObject, KakaoMapsSDK.Label {
   @objc deinit
@@ -871,6 +722,9 @@ extension KakaoMapsSDK.RoadviewInfo {
   }
   @objc deinit
 }
+@objc @_hasMissingDesignatedInitializers public class RoadviewInfo : KakaoMapsSDK.ViewInfo {
+  @objc deinit
+}
 @objc @_hasMissingDesignatedInitializers open class GuiLayout : KakaoMapsSDK.GuiComponentGroup {
   @objc public init(_ componentId: Swift.String)
   @objc public init(_ componentId: Swift.String, arrangement: KakaoMapsSDK.LayoutArrangement)
@@ -946,36 +800,6 @@ extension KakaoMapsSDK.RoadviewInfo {
   }
   @objc deinit
 }
-@objc open class PanoramaMarker : ObjectiveC.NSObject {
-  public init(position: KakaoMapsSDK.MapPoint)
-  public init(pan: Swift.Double, tilt: Swift.Double)
-  @objc open var markerType: KakaoMapsSDK.PanoramaMarkerType {
-    @objc get
-  }
-  @objc open var pan: Swift.Double {
-    @objc get
-  }
-  @objc open var tilt: Swift.Double {
-    @objc get
-  }
-  @objc open var position: KakaoMapsSDK.MapPoint? {
-    @objc get
-  }
-  @objc open var symbol: UIKit.UIImage? {
-    @objc get
-    @objc set
-  }
-  @objc deinit
-}
-@objc @_hasMissingDesignatedInitializers public class MapviewInfo : KakaoMapsSDK.ViewInfo {
-  @objc public var defaultPosition: KakaoMapsSDK.MapPoint {
-    @objc get
-  }
-  @objc public var defaultLevel: Swift.Int {
-    @objc get
-  }
-  @objc deinit
-}
 @objc @_hasMissingDesignatedInitializers public class LabelManager : ObjectiveC.NSObject {
   @objc open func addPoiStyle(_ style: KakaoMapsSDK.PoiStyle)
   @objc open func removePoiStyle(_ styleID: Swift.String)
@@ -1040,21 +864,6 @@ extension KakaoMapsSDK.RoadviewInfo {
   }
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers public class RouteAnimator : ObjectiveC.NSObject, KakaoMapsSDK.Animator {
-  @objc public func start()
-  @objc public func stop()
-  @objc public func setStopCallback(_ callback: (((any KakaoMapsSDK.Animator)?) -> Swift.Void)?)
-  @objc public func addRoute(_ route: KakaoMapsSDK.Route)
-  @objc public func addRoutes(_ routes: [KakaoMapsSDK.Route])
-  @objc public func clearAllRoutes()
-  @objc public var animatorID: Swift.String {
-    @objc get
-  }
-  @objc public var isStart: Swift.Bool {
-    @objc get
-  }
-  @objc deinit
-}
 @objc @_hasMissingDesignatedInitializers open class DimScreen : ObjectiveC.NSObject {
   @objc open func addPolygonStyleSet(_ styles: KakaoMapsSDK.PolygonStyleSet)
   @objc open func addHighlightMapPolygonShape(_ shapeOption: KakaoMapsSDK.MapPolygonShapeOptions, callback: ((KakaoMapsSDK.MapPolygonShape?) -> Swift.Void)? = nil) -> KakaoMapsSDK.MapPolygonShape?
@@ -1106,12 +915,6 @@ extension KakaoMapsSDK.RoadviewInfo {
   @objc open func setGestureEnable(type gestureType: KakaoMapsSDK.GestureType, enable: Swift.Bool)
   @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers public class ZoneManager : ObjectiveC.NSObject {
-  @objc public func setZoneCheckRectScale(zoneType: Swift.String, level: Swift.Int, scale: KakaoMapsSDK.Vector2)
-  @objc public func showZoneDetail(zoneType: Swift.String, zoneId: Swift.String, detailId: Swift.String)
-  @objc public func hideZoneDetail(zoneType: Swift.String)
-  @objc deinit
-}
 @objc @_hasMissingDesignatedInitializers open class GuiText : KakaoMapsSDK.GuiComponentBase {
   @objc public init(_ componentId: Swift.String)
   @objc open func addText(text: Swift.String, style: KakaoMapsSDK.TextStyle = TextStyle())
@@ -1148,6 +951,62 @@ extension KakaoMapsSDK.RoadviewInfo {
   }
   @objc deinit
 }
+extension KakaoMapsSDK.LabelLayerOptions {
+  @objc dynamic public func addCompetitionExcludeLayer(_ layerName: Swift.String)
+  @objc dynamic public func getCompetitionExcludeLayers() -> [Swift.String]
+}
+extension KakaoMapsSDK.LodLabelLayerOptions {
+  @objc dynamic public func addCompetitionExcludeLayer(_ layerName: Swift.String)
+  @objc dynamic public func getCompetitionExcludeLayers() -> [Swift.String]
+}
+@objc public protocol RoadviewEventDelegate {
+  @objc optional func roadviewDidResized(_ roadview: KakaoMapsSDK.Roadview)
+  @objc optional func panoramaUpdated(_ panoId: Swift.String)
+  @objc optional func roadviewFocusDidChanged(roadview: KakaoMapsSDK.Roadview, focus: Swift.Bool)
+  @objc func roadviewResultDidReceived(roadview: KakaoMapsSDK.Roadview, panoID: Swift.String, date: Swift.String, position: KakaoMapsSDK.MapPoint)
+  @objc optional func noRoadviewResult(_ roadview: KakaoMapsSDK.Roadview)
+  @objc optional func roadviewRequestDidFailed(_ roadview: KakaoMapsSDK.Roadview)
+  @objc optional func invalidRoadviewRequest(_ roadview: KakaoMapsSDK.Roadview)
+  @objc optional func roadviewDidTapped(roadview: KakaoMapsSDK.Roadview, point: CoreFoundation.CGPoint)
+}
+@objc open class PanoramaMarker : ObjectiveC.NSObject {
+  public init(position: KakaoMapsSDK.MapPoint)
+  public init(pan: Swift.Double, tilt: Swift.Double)
+  @objc open var markerType: KakaoMapsSDK.PanoramaMarkerType {
+    @objc get
+  }
+  @objc open var pan: Swift.Double {
+    @objc get
+  }
+  @objc open var tilt: Swift.Double {
+    @objc get
+  }
+  @objc open var position: KakaoMapsSDK.MapPoint? {
+    @objc get
+  }
+  @objc open var symbol: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc open class RoadviewLookAt : ObjectiveC.NSObject {
+  @objc public init(pan: Swift.Double, tilt: Swift.Double)
+  @objc public init(position: KakaoMapsSDK.MapPoint)
+  @objc public var pan: Swift.Double {
+    @objc get
+  }
+  @objc public var tilt: Swift.Double {
+    @objc get
+  }
+  @objc public var position: KakaoMapsSDK.MapPoint? {
+    @objc get
+  }
+  @objc public var lookAtType: KakaoMapsSDK.RoadviewLookAtType {
+    @objc get
+  }
+  @objc deinit
+}
 @objc open class LodLabelLayerOptions : ObjectiveC.NSObject {
   @objc public init(layerID: Swift.String, competitionType: KakaoMapsSDK.CompetitionType, competitionUnit: KakaoMapsSDK.CompetitionUnit, orderType: KakaoMapsSDK.OrderingType, zOrder: Swift.Int, radius: Swift.Float)
   @objc public var layerID: Swift.String {
@@ -1174,9 +1033,6 @@ extension KakaoMapsSDK.RoadviewInfo {
     @objc get
     @objc set
   }
-  @objc deinit
-}
-@objc @_hasMissingDesignatedInitializers public class RoadviewInfo : KakaoMapsSDK.ViewInfo {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class MapCoordConverter : ObjectiveC.NSObject {
@@ -1280,6 +1136,25 @@ extension KakaoMapsSDK.RoadviewInfo {
   @objc open var levelLimit: Swift.Int {
     @objc get
   }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ZoneLinkInfo : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc convenience public init(zoneId: Swift.String, detailId: Swift.String)
+  @objc public var zoneId: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc public var detailId: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class ZoneManager : ObjectiveC.NSObject {
+  @objc public func setZoneCheckRectScale(zoneType: Swift.String, level: Swift.Int, scale: KakaoMapsSDK.Vector2)
+  @objc public func showZoneDetail(zoneType: Swift.String, zoneId: Swift.String, detailId: Swift.String)
+  @objc public func hideZoneDetail(zoneType: Swift.String)
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class ViewInfo : ObjectiveC.NSObject {
@@ -1449,6 +1324,26 @@ public struct ZoneLeaveEventParam {
 }
 public protocol DisposableEventHandler {
   func dispose()
+}
+@objc public protocol RouteAnimationEffect {
+  @objc var interpolation: KakaoMapsSDK.AnimationInterpolation { get set }
+  @objc var hideAtStop: Swift.Bool { get set }
+  @objc var resetToInitialState: Swift.Bool { get set }
+}
+@objc @_hasMissingDesignatedInitializers public class RouteAnimator : ObjectiveC.NSObject, KakaoMapsSDK.Animator {
+  @objc public func start()
+  @objc public func stop()
+  @objc public func setStopCallback(_ callback: (((any KakaoMapsSDK.Animator)?) -> Swift.Void)?)
+  @objc public func addRoute(_ route: KakaoMapsSDK.Route)
+  @objc public func addRoutes(_ routes: [KakaoMapsSDK.Route])
+  @objc public func clearAllRoutes()
+  @objc public var animatorID: Swift.String {
+    @objc get
+  }
+  @objc public var isStart: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers open class GuiManager : ObjectiveC.NSObject {
   @objc public func addInfoWindowAnimator(animatorID: Swift.String, effect: any KakaoMapsSDK.InfoWindowAnimationEffect) -> KakaoMapsSDK.InfoWindowAnimator?
@@ -1670,13 +1565,6 @@ public protocol DisposableEventHandler {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc public class SDKInitializer : ObjectiveC.NSObject {
-  @objc public static func InitSDK(appKey: Swift.String, phase: KakaoMapsSDK.KAPhase = .real)
-  @objc public static func GetPhase() -> KakaoMapsSDK.KAPhase
-  @objc public static func GetAppKey() -> Swift.String
-  @objc override dynamic public init()
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers open class GuiButton : KakaoMapsSDK.GuiImage {
   @objc override public init(_ componentId: Swift.String)
   @objc open var pressedImage: UIKit.UIImage? {
@@ -1718,6 +1606,126 @@ public protocol DisposableEventHandler {
   @objc var interpolation: KakaoMapsSDK.AnimationInterpolation { get set }
   @objc var hideAtStop: Swift.Bool { get set }
   @objc var playCount: Swift.UInt { get set }
+}
+@objc public class ProgressAnimationEffect : ObjectiveC.NSObject, KakaoMapsSDK.RouteAnimationEffect {
+  @objc public init(direction: KakaoMapsSDK.ProgressDirection, type: KakaoMapsSDK.RouteProgressType)
+  @objc public var startPoint: Swift.Float {
+    @objc get
+  }
+  @objc public var endPoint: Swift.Float {
+    @objc get
+  }
+  @objc public var direction: KakaoMapsSDK.ProgressDirection {
+    @objc get
+    @objc set
+  }
+  @objc public var type: KakaoMapsSDK.RouteProgressType {
+    @objc get
+    @objc set
+  }
+  @objc public var interpolation: KakaoMapsSDK.AnimationInterpolation {
+    @objc get
+    @objc set
+  }
+  @objc public var hideAtStop: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var resetToInitialState: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class AnimationKeyFrame : ObjectiveC.NSObject {
+  @objc public var interpolation: KakaoMapsSDK.AnimationInterpolation {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class ScaleAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
+  @objc public init(scale: KakaoMapsSDK.Vector2, interpolation: KakaoMapsSDK.AnimationInterpolation)
+  @objc public var scale: KakaoMapsSDK.Vector2 {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class AlphaAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
+  @objc public init(alpha: Swift.Float, interpolation: KakaoMapsSDK.AnimationInterpolation)
+  @objc public var alpha: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class ScaleAlphaAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
+  @objc public init(scale: KakaoMapsSDK.Vector2, alpha: Swift.Float, interpolation: KakaoMapsSDK.AnimationInterpolation)
+  @objc public var alpha: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc public var scale: KakaoMapsSDK.Vector2 {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class TransformAnimationKeyFrame : KakaoMapsSDK.AnimationKeyFrame {
+  @objc public init(translation: KakaoMapsSDK.Vector2, rotation: Swift.Float, scale: KakaoMapsSDK.Vector2, alpha: Swift.Float, interpolation: KakaoMapsSDK.AnimationInterpolation)
+  @objc public var rotation: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc public var scale: KakaoMapsSDK.Vector2 {
+    @objc get
+    @objc set
+  }
+  @objc public var translation: KakaoMapsSDK.Vector2 {
+    @objc get
+    @objc set
+  }
+  @objc public var alpha: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class KeyFrameAnimationEffect : ObjectiveC.NSObject, KakaoMapsSDK.PoiAnimationEffect {
+  @objc public var hideAtStop: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var removeAtStop: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var resetToInitialState: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class TransformAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
+  @objc dynamic public init()
+  @objc public func addKeyframe(_ frame: KakaoMapsSDK.TransformAnimationKeyFrame)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ScaleAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
+  @objc dynamic public init()
+  @objc public func addKeyframe(_ frame: KakaoMapsSDK.ScaleAnimationKeyFrame)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AlphaAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
+  @objc dynamic public init()
+  @objc public func addKeyframe(_ frame: KakaoMapsSDK.AlphaAnimationKeyFrame)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ScaleAlphaAnimationEffect : KakaoMapsSDK.KeyFrameAnimationEffect {
+  @objc dynamic public init()
+  @objc public func addKeyframe(_ frame: KakaoMapsSDK.ScaleAlphaAnimationKeyFrame)
+  @objc deinit
 }
 @objc public protocol PoiAnimationEffect {
   @objc var hideAtStop: Swift.Bool { get set }
