@@ -11,18 +11,23 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "KakaoMapsSDK-SPM",
-            targets: ["KakaoMapsSDK-SPM"]),
+            targets: ["KakaoMapsSDKSPM"]),
         .library(
             name: "KakaoMapsSDK-SPM-Dynamic",
             type: .dynamic,
-            targets: ["KakaoMapsSDK-SPM"])
+            targets: ["KakaoMapsSDKSPM"])
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
+        // 타깃 이름이 곧 Swift 모듈명이라 하이픈을 쓸 수 없다. Swift 6.2 부터
+        // 컴파일러가 `-module-name KakaoMapsSDK-SPM` 을 거부한다.
+        // 소스 위치는 그대로 두고 이름만 바꾼다. 제품 이름은 upstream 과 같게 남겨
+        // 의존하는 쪽에서 고칠 게 없도록 한다.
         .target(
-            name: "KakaoMapsSDK-SPM",
+            name: "KakaoMapsSDKSPM",
             dependencies: ["framework"],
+            path: "Sources/KakaoMapsSDK-SPM",
             resources: [.copy("KakaoMapsSDKBundle.bundle/assets")]),
         .binaryTarget(name: "framework", path: "BinaryFramework/KakaoMapsSDK.xcframework")
     ],
